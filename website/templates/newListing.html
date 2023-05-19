@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}New Listing{% endblock %}
+{% block content %}
+<form method="POST">
+  <h2> Add New Listing </h2>
+  <div class="form-group">
+    <label for="title">Book Title</label>
+    <input type="text"
+           class="form-control"
+           id="title"
+           name="title"
+           placeholder="Enter Book Title"
+    />
+    <label for="author">Author</label>
+    <input type="text"
+           class="form-control"
+           id="author"
+           name="author"
+           placeholder="Enter Author Name"
+    />
+    <label for="desc">Description</label>
+    <input type="text"
+           class="form-control"
+           id="desc"
+           name="class"
+           placeholder="Enter Book Description"
+    />
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>
+{% endblock %}

@@ -9,3 +9,7 @@ views = Blueprint('views', __name__)
 @views.route('/', methods=['POST', 'GET'])
 def home():
     return render_template("home.html", user=current_user)
+
+@views.route('/profile', methods=['POST', 'GET'])
+def profile():
+    return render_template("profile.html", user=current_user)

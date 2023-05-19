@@ -14,12 +14,22 @@ def create_app():
 
     from .views import views
     from .auth import auth
+    from .newlisting import newlisting
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
+    app.register_blueprint(newlisting, url_prefix='/')
 
     with app.app_context():
         from .models import User, Listing
         db.create_all()
+
+    login_manager = LoginManager()
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(app)
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        return None
 
     return app

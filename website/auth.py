@@ -8,7 +8,28 @@ auth = Blueprint("auth", __name__)
 
 @auth.route("/login", methods=['POST', 'GET'])
 def login():
-    pass
+    if request.method == 'POST':
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        user = User.query.filter_by(email=email).first()
+        if user:
+            if check_password_hash(user.password, password):
+                flash("Logged in succesfully", category="success")
+                login_user(user, remember=True)
+                return redirect(url_for("views.home"))
+            else:
+                flash("Incorrect password, try again.", category="error")
+        else:
+            flash("Email is not registered.", category="error")
+
+    return render_template("login.html", user=current_user)
+
+@auth.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("views.home"))
 
 @auth.route("/signup", methods=['POST', 'GET'])
 def signup():
