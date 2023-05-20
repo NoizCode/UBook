@@ -2,9 +2,10 @@
 {% block content %}
 <h1 align="center">Home</h1>
 <ul class="list-group list-group-flush" id="listings">
-  {% for ads in user.Listing %}
-  <li class="list-group-item">{{ads.title}}</li>
-  <li class="list-group-item">{{ads.author}}</li>
+  {% for listing in listings %}
+  <li class="list-group-item">{{listing.title}}</li>
+  <li class="list-group-item">{{listing.author}}</li>
+  <br><br>
   {% endfor %}
 </ul>
 {% endblock %}

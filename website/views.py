@@ -8,7 +8,8 @@ views = Blueprint('views', __name__)
 
 @views.route('/', methods=['POST', 'GET'])
 def home():
-    return render_template("home.html", user=current_user)
+    all_listings = Listing.query.all()
+    return render_template("home.html", listings=all_listings)
 
 @views.route('/profile', methods=['POST', 'GET'])
 def profile():
