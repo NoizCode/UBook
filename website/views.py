@@ -12,5 +12,6 @@ def home():
     return render_template("home.html", listings=all_listings)
 
 @views.route('/profile', methods=['POST', 'GET'])
+@login_required
 def profile():
     return render_template("profile.html", user=current_user)

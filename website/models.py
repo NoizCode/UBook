@@ -17,3 +17,6 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
     listing = db.relationship('Listing')
+
+    def get_id(self):
+        return str(self.id)
