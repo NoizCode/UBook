@@ -3,9 +3,13 @@
 <h1 align="center">Home</h1>
 <ul class="list-group list-group-flush" id="listings">
   {% for listing in listings %}
-  <li class="list-group-item">{{listing.title}}</li>
-  <li class="list-group-item">{{listing.author}}</li>
-  <br><br>
+    <li class="list-group-item"><h2>{{listing.title}}</h2></li>
+    <li class="list-group-item">{{listing.author}}</li>
+    <li class="list-group-item"><img src="{{listing.image_url}}" alt="Ad image" width=200px></li>
+    <li class="list-group-item"><h3>{{listing.price}}€</h3></li>
+    <li class="list-group-item">{{listing.desc}}</li>
+    <li class="list-group-item">{{listing.user.first_name}}</li>
+    <br><br>
   {% endfor %}
 </ul>
 {% endblock %}

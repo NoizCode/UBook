@@ -8,6 +8,8 @@ class Listing(db.Model):
     title = db.Column(db.String(1000))
     author = db.Column(db.String(100))
     desc = db.Column(db.String(1000))
+    price = db.Column(db.String(1000))
+    image_url = db.Column(db.Text, nullable=False)
     date = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
@@ -16,7 +18,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
-    listing = db.relationship('Listing')
+    listing = db.relationship('Listing', backref="user")
 
     def get_id(self):
         return str(self.id)
